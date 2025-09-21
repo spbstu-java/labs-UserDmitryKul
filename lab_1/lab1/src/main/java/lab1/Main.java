@@ -74,11 +74,6 @@ public class Main {
         System.out.println("W/S - навигация, E - выбрать, M - переместиться Q - выход");
     }
 
-    static void HeroMove(Hero hero, int x, int y, IMovementStrategy strategy){
-
-        hero.setMoveStrategy(strategy);
-    }
-
     public static void clearScreen() {
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
