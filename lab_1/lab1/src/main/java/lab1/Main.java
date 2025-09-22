@@ -6,6 +6,7 @@ public class Main {
     private static List<String> listMainMenu = new ArrayList<String>();
     private static Hero hero;
     private static Scanner scanner = new Scanner(System.in);
+    private static int pos = 0;
     
     public static void main(String[] args) {
 
@@ -19,8 +20,6 @@ public class Main {
         listMainMenu.add(strategies.get(2).getName());
 
         hero = new Hero(0, 0, strategies.get(0));
-
-        int pos = 0;
 
         while (true) {
             printMenu(pos, listMainMenu);
@@ -45,7 +44,23 @@ public class Main {
                 case 'm': // Переместиться
                     clearScreen();
                     System.out.println("Введите координаты через пробел");
+                    
+                    if (!scanner.hasNextInt()){
+                        System.out.printf("Неверные координаты!\n" + 
+                                          "Нажмите \"Enter\" для продолжения.");
+                        scanner.nextLine();
+                        scanner.nextLine();
+                        break;
+                    }
                     int xPos = scanner.nextInt();
+
+                    if (!scanner.hasNextInt()){
+                        System.out.printf("Неверные координаты!\n" + 
+                                          "Нажмите \"Enter\" для продолжения.");
+                        scanner.nextLine();
+                        scanner.nextLine();
+                        break;
+                    }
                     int yPos = scanner.nextInt();
 
                     hero.move(xPos, yPos);
