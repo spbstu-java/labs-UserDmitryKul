@@ -1,0 +1,4 @@
+hello | привет
+how are you | как ты
+look | смотреть
+look forward | ожидать
