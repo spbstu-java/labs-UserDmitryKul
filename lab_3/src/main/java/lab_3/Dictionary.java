@@ -21,9 +21,7 @@ public class Dictionary {
     public void loadDictionary(String filename) throws FileReadException, InvalidFileFormatException {
         wordPairs.clear();
         
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(filename));
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             int lineNum = 1;
             
@@ -63,14 +61,6 @@ public class Dictionary {
             throw new FileReadException("Файл не найден: " + filename, e);
         } catch (java.io.IOException e) {
             throw new FileReadException("Ошибка чтения файла: " + filename, e);
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (java.io.IOException e) { 
-                    // Игнорируем ошибку закрытия
-                }
-            }
         }
     }
     
